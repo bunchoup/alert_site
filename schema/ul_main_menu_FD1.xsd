@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	
+	<xs:complexType name="ul_main_menu" mixed="true">
+		<xs:sequence>
+			<xs:element name="li" minOccurs="1" maxOccurs="unbounded" type="li_main_menu"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="li_main_menu">
+		<xs:sequence>
+			<!--Nav Top link-->
+			<xs:element name="a" type="a_main_menu_top" minOccurs="0" maxOccurs="1"></xs:element>
+			<!--/Nav Top link-->
+			<!--Body Nav-->
+			<xs:element name="span" type="span_main_menu" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="div" type="div_main_menu" minOccurs="0" maxOccurs="1"></xs:element>
+			<!--/Body Nav-->
+		</xs:sequence>
+		<xs:attribute name="data-ur-set" use="optional" type="xs:NCName"/>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="span_main_menu">
+		<xs:sequence>
+			<xs:element name="div" minOccurs="2" maxOccurs="3" type="div_simple"/>
+		</xs:sequence>
+		<xs:attribute name="class" use="optional" type="xs:string"/>
+		<xs:attribute name="rel" use="optional" type="xs:NCName"/>
+		<xs:attribute name="id" use="optional" type="xs:NCName"/>
+		<xs:attribute name="target" use="optional" type="xs:NCName"/>
+		<xs:attribute name="rank" use="optional" type="xs:integer"/>
+		<xs:attribute name="onclick" use="optional" type="xs:string"/>
+		<xs:attribute name="data-ur-toggler-component" use="optional" type="xs:NCName"/>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="div_main_menu">
+		<xs:sequence>
+			<xs:element name="ul" type="ul_submenu" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="data-ur-toggler-component" use="required" type="xs:NCName"/>
+		<xs:attribute name="class" use="optional" type="xs:string"/>
+		<xs:attribute name="id" use="optional" type="xs:NCName"/>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="ul_submenu">
+		<xs:sequence>
+			<xs:element name="li" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="div" minOccurs="1" maxOccurs="1">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="div" minOccurs="1" maxOccurs="1">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="a" minOccurs="1" maxOccurs="1" type="a_custom"></xs:element>
+											</xs:sequence>
+											<xs:attribute name="class" use="optional" type="xs:string"/>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="class" use="optional" type="xs:string"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="a_custom">
+		<xs:sequence>
+			<xs:element name="div" minOccurs="2" maxOccurs="2" type="div_simple"/>
+		</xs:sequence>
+		<xs:attribute name="appshim" use="required" type="xs:boolean"/>
+		<xs:attribute name="class" use="required" type="xs:string"/>
+		<xs:attribute name="data-mw-title" use="required"/>
+		<xs:attribute name="href" use="required" type="xs:anyURI"/>
+		<xs:attribute name="rank" use="optional" type="xs:integer"/>
+		<xs:attribute name="target" use="required" type="xs:NCName"/>
+	</xs:complexType>
+	
+	<xs:complexType name="a_main_menu_top" mixed="true">
+		<xs:sequence>
+			<xs:element name="div" minOccurs="1" maxOccurs="1" type="div_simple"/>
+		</xs:sequence>
+		<xs:attribute name="class" use="required" type="xs:string"/>
+		<xs:attribute name="data-mw-title" use="required"/>
+		<xs:attribute name="href" use="required" type="xs:anyURI"/>
+	</xs:complexType>
+	
+	<xs:complexType name="div_simple">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="class" type="xs:string" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

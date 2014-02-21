@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="div">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="div"/>
+        <xs:element ref="a"/>
+        <xs:element ref="ul"/>
+      </xs:choice>
+      <xs:attribute name="class" use="required" type="xs:NCName"/>
+      <xs:attribute name="data-ur-toggler-component" type="xs:NCName"/>
+      <xs:attribute name="id" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="a">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="div"/>
+      </xs:sequence>
+      <xs:attribute name="appshim" use="required" type="xs:boolean"/>
+      <xs:attribute name="class" use="required" type="xs:NCName"/>
+      <xs:attribute name="data-mw-title" use="required"/>
+      <xs:attribute name="href" use="required" type="xs:anyURI"/>
+      <xs:attribute name="rank" use="required" type="xs:integer"/>
+      <xs:attribute name="target" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ul">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="li"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="li">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="span"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="div"/>
+        <xs:element minOccurs="0" ref="script"/>
+      </xs:sequence>
+      <xs:attribute name="data-ur-set" type="xs:NCName"/>
+      <xs:attribute name="id" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="span">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="div"/>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:NCName"/>
+      <xs:attribute name="data-ur-toggler-component" type="xs:NCName"/>
+      <xs:attribute name="id" type="xs:NCName"/>
+      <xs:attribute name="onclick"/>
+      <xs:attribute name="rank" type="xs:integer"/>
+      <xs:attribute name="rel" type="xs:NCName"/>
+      <xs:attribute name="target" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="script">
+    <xs:complexType mixed="true">
+      <xs:attribute name="class" use="required" type="xs:NCName"/>
+      <xs:attribute name="type" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

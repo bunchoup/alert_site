@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <div class="row" id="_fagf">
+    <div class="toggle_header touching large bold open">Find a Gift Fast</div>
+    <div class="fagf secondary_fields toggle_content" id="fagf">
+      <form name="findAGiftFast" id="findAGiftFastFrm" method="post" onsubmit="if(checkZipValForFAGF()){this.action}else{this.mod_zipCode.focus();return false;}">
+        <input type="hidden" id="categoryId" value=""/>
+        <input type="hidden" id="top_category" value=""/>
+        <input type="hidden" id="filterOn" value=""/>
+        <input type="image" alt="Go" class="fagf_button hide" src="//cdn2.1800flowers.com/wcsstore/Flowers/images/hp/fall14/fagf-go-btn.gif"/>
+        <div class="row split" id="_fagf_zip_occ">
+          <div class="fagf_where">
+            <input class="welcomefindagiftfasttext" name="zipcode" id="mod_zipCode" maxlength="5" type="tel" placeholder="Recipient's Zip"/>
+          </div>
+          <div class="fagf_occasion">
+            <select id="dataset" class="welcomefindagiftfasttext icon-drop_down icon-drop_down" name="dataSetDropDown">
+              <option value="11354">Occasion</option>
+              <option value="10781">Anniversary</option>
+              <option value="10782">Birthday</option>
+              <option value="10800">Congratulations</option>
+              <option value="11354">Flowers &amp; Gifts</option>
+              <option value="10794">Get Well</option>
+              <option value="10869">I'm Sorry</option>
+              <option value="10795">Just Because</option>
+              <option value="10796">Love &amp;Romance</option>
+              <option value="10797">New Baby</option>
+              <option value="10798">Thank You</option>
+              <option value="10235">Sympathy</option>
+            </select>
+          </div>
+        </div>
+        <div id="error-msg-zipcode-modal" style="display: none;" class="row error_color align_center hide">
+          <div id="error-arrow"/>
+          <div id="error-msg-modal"/>
+        </div>
+        <div class="row split" id="_fagf_when_find">
+          <div class="fagf_when extra_width">
+            <select id="deliveryDateSelBox" name="deliveryD" class="welcomefindagiftfasttext icon-drop_down icon-drop_down"/>
+          </div>
+          <div>
+            <div class="fake_button bold secondary" id="_find_gift">Find</div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</root>

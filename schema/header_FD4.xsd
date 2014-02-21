@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="base_FD4.xsd"/>
+	
+	<xs:element name="root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="header" type="header_type" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="header_type">
+		<xs:sequence>
+			<xs:element name="div">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="a" type="a_simple_optional_text" maxOccurs="1" minOccurs="1">
+						</xs:element>
+						<xs:element name="div" type="top_btns" maxOccurs="1" minOccurs="1">
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute ref="class" use="required"></xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute ref="class" use="optional"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="top_btns">
+		<xs:sequence>
+			<xs:element name="a" type="a_btns"></xs:element>
+			<xs:element name="a" type="a_btns"></xs:element>
+			<xs:element name="div">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="span" type="span_simple_optional_text"></xs:element>
+					</xs:sequence>
+					<xs:attribute ref="href" use="optional"></xs:attribute>
+					<xs:attribute ref="class" use="required"></xs:attribute>
+					<xs:attribute ref="id" use="required"></xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="div" type="div_simple_optional_text"></xs:element>
+		</xs:sequence>
+		<xs:attribute ref="class" use="required"></xs:attribute>
+		<xs:attribute ref="id" use="required"></xs:attribute>
+	</xs:complexType>
+
+	
+	<xs:complexType name="a_btns">
+		<xs:sequence>
+			<xs:element name="span" type="span_simple_optional_text"></xs:element>
+			<xs:element name="div" minOccurs="0" type="div_simple_optional_text"></xs:element>
+		</xs:sequence>
+		<xs:attribute ref="href" use="required"></xs:attribute>
+		<xs:attribute ref="class" use="required"></xs:attribute>
+		<xs:attribute ref="id" use="required"></xs:attribute>
+	</xs:complexType>
+	
+</xs:schema>

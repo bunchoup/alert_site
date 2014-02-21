@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="span" maxOccurs="unbounded" type="span_dropmenu"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:complexType name="span_dropmenu">
+      <xs:sequence>
+		<xs:element name="div" type="span_div" minOccurs="3" maxOccurs="3"/>        
+      </xs:sequence>
+      <xs:attribute name="class" use="required" type="span_dropmenu_class"/>
+      <xs:attribute name="data-ur-toggler-component" use="required" type="xs:NCName" fixed="button"/>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="rank" use="required" type="xs:integer"/>
+      <xs:attribute name="rel" use="required" type="xs:NCName"/>
+      <xs:attribute name="target" use="required" type="xs:NCName"/>
+  </xs:complexType>
+  
+  <xs:simpleType name="span_dropmenu_class">
+  	<xs:restriction base="xs:string">
+  		 <xs:pattern value="tabnormal([a-z0-9_\s])*"/>
+	</xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="span_div">
+     <xs:simpleContent>
+        <xs:extension base="xs:string">
+           <xs:attribute name="class" type="span_div_class" use="required">
+           </xs:attribute>
+        </xs:extension>
+    </xs:simpleContent>
+   </xs:complexType>
+  
+  <xs:simpleType name="span_div_class">
+  	<xs:restriction base="xs:string">
+  		 <xs:pattern value="mw_accordion_text([a-z0-9_\s])*|icons-acc_plus_sec_icon_retina([a-z0-9_\s])*|icons-acc_minus_sec_icon_retina([a-z0-9_\s])*"/>
+	</xs:restriction>
+  </xs:simpleType>
+    
+  <xs:group name="Div3">
+  	<xs:sequence>
+  		<xs:element name="div" maxOccurs="3">
+  		<xs:complexType>
+  			<xs:attribute name="class" use="required" type="xs:NCName"/>
+  		</xs:complexType>
+  		</xs:element>
+  	</xs:sequence>
+  </xs:group>
+  
+</xs:schema>

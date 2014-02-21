@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="html">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="head"/>
+        <xs:element ref="body"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="head">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="input"/>
+        <xs:element ref="script"/>
+        <xs:element ref="link"/>
+        <xs:element ref="meta"/>
+        <xs:element ref="title"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="link">
+    <xs:complexType>
+      <xs:attribute name="class" type="xs:NCName"/>
+      <xs:attribute name="href" use="required" type="xs:anyURI"/>
+      <xs:attribute name="rel" use="required" type="xs:NCName"/>
+      <xs:attribute name="type"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="meta">
+    <xs:complexType>
+      <xs:attribute name="content" use="required"/>
+      <xs:attribute name="http-equiv" type="xs:NCName"/>
+      <xs:attribute name="name" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="title" type="xs:string"/>
+  <xs:element name="body">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="div"/>
+        <xs:element ref="script"/>
+        <xs:element ref="noscript"/>
+      </xs:choice>
+      <xs:attribute name="class" use="required"/>
+      <xs:attribute name="data-mw-ga-name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="noscript">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="iframe"/>
+      </xs:sequence>
+      <xs:attribute name="class" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iframe">
+    <xs:complexType>
+      <xs:attribute name="class" use="required" type="xs:NCName"/>
+      <xs:attribute name="frameborder" use="required" type="xs:integer"/>
+      <xs:attribute name="height" use="required" type="xs:integer"/>
+      <xs:attribute name="marginheight" use="required" type="xs:integer"/>
+      <xs:attribute name="marginwidth" use="required" type="xs:integer"/>
+      <xs:attribute name="scrolling" use="required" type="xs:NCName"/>
+      <xs:attribute name="src" use="required"/>
+      <xs:attribute name="width" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="script">
+    <xs:complexType mixed="true">
+      <xs:attribute name="class"/>
+      <xs:attribute name="language" type="xs:NCName"/>
+      <xs:attribute name="src" type="xs:anyURI"/>
+      <xs:attribute name="type"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="input">
+    <xs:complexType>
+      <xs:attribute name="class" type="xs:NCName"/>
+      <xs:attribute name="data-mw-title"/>
+      <xs:attribute name="data-stylename" type="xs:NCName"/>
+      <xs:attribute name="id" type="xs:NCName"/>
+      <xs:attribute name="maxlength" type="xs:integer"/>
+      <xs:attribute name="name" type="xs:NCName"/>
+      <xs:attribute name="onclick"/>
+      <xs:attribute name="onfocus"/>
+      <xs:attribute name="placeholder"/>
+      <xs:attribute name="style"/>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+      <xs:attribute name="value"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="div">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="a"/>
+        <xs:element ref="div"/>
+        <xs:element ref="form"/>
+        <xs:element ref="input"/>
+        <xs:element ref="span"/>
+        <xs:element ref="ul"/>
+        <xs:element ref="select"/>
+        <xs:element ref="table"/>
+      </xs:choice>
+      <xs:attribute name="class"/>
+      <xs:attribute name="cookie_domain" type="xs:NMTOKEN"/>
+      <xs:attribute name="cookie_hours" type="xs:integer"/>
+      <xs:attribute name="data-header" type="xs:NCName"/>
+      <xs:attribute name="data-ur-id" type="xs:NCName"/>
+      <xs:attribute name="data-ur-set" type="xs:NCName"/>
+      <xs:attribute name="data-ur-state" type="xs:NCName"/>
+      <xs:attribute name="data-ur-toggler-component" type="xs:NCName"/>
+      <xs:attribute name="id" type="xs:NCName"/>
+      <xs:attribute name="onclick"/>
+      <xs:attribute name="page_name" type="xs:NMTOKEN"/>
+      <xs:attribute name="style"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="select">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="option"/>
+      </xs:sequence>
+      <xs:attribute name="class" use="required" type="xs:NCName"/>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="onchange"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="option">
+    <xs:complexType mixed="true">
+      <xs:attribute name="value" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="table">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="tr"/>
+      </xs:sequence>
+      <xs:attribute name="class" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tr">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="td"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="td">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="div"/>
+      </xs:sequence>
+      <xs:attribute name="zone" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ul">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="li"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="form">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="div"/>
+        <xs:element ref="input"/>
+      </xs:choice>
+      <xs:attribute name="action" use="required"/>
+      <xs:attribute name="data-ur-toggler-component" type="xs:NCName"/>
+      <xs:attribute name="id" type="xs:NCName"/>
+      <xs:attribute name="method" use="required" type="xs:NCName"/>
+      <xs:attribute name="name" type="xs:NCName"/>
+      <xs:attribute name="onsubmit"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="a">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="div"/>
+        <xs:element ref="form"/>
+        <xs:element ref="li"/>
+        <xs:element ref="span"/>
+        <xs:element ref="ul"/>
+      </xs:choice>
+      <xs:attribute name="appshim" type="xs:boolean"/>
+      <xs:attribute name="class"/>
+      <xs:attribute name="data-mw-title"/>
+      <xs:attribute name="href" use="required"/>
+      <xs:attribute name="id" type="xs:NCName"/>
+      <xs:attribute name="onclick"/>
+      <xs:attribute name="rank"/>
+      <xs:attribute name="rel" type="xs:NCName"/>
+      <xs:attribute name="style"/>
+      <xs:attribute name="target" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="span">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="div"/>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:NCName"/>
+      <xs:attribute name="data-ur-toggler-component" type="xs:NCName"/>
+      <xs:attribute name="id" type="xs:NCName"/>
+      <xs:attribute name="onclick"/>
+      <xs:attribute name="rank" type="xs:integer"/>
+      <xs:attribute name="rel" type="xs:NCName"/>
+      <xs:attribute name="style"/>
+      <xs:attribute name="target" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="li">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="a"/>
+        <xs:element minOccurs="0" ref="span"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="div"/>
+        <xs:element minOccurs="0" ref="script"/>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:NCName"/>
+      <xs:attribute name="data-ur-set" type="xs:NCName"/>
+      <xs:attribute name="id" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

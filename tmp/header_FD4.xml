@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <header class="_header _keep">
+    <div class="row no_margin">
+      <a href="http://m3.www3.1800flowers.com" id="_logo" class="pull_left img-logo"/>
+      <div id="_top_btns" class="pull_right">
+        <a id="login_btn" href="/webapp/wcs/stores/servlet/AjaxLogonForm?storeId=20051&amp;catalogId=13302&amp;langId=-1&amp;MyAccount=Y" class="pull_left sprites-fw_login">
+          <span class="bold">Login</span>
+        </a>
+        <a id="cart_btn" href="/webapp/wcs/stores/servlet/AjaxCheckoutDisplayView?langId=-1&amp;storeId=20051&amp;catalogId=13302" class="pull_left sprites-fw_cart">
+          <span class="bold">0</span>
+          <div class="hide" id="miniCartTotals"/>
+        </a>
+        <div id="menu_btn" href="#" class="pull_left sprites-fw_menu">
+          <span class="bold">Menu</span>
+        </div>
+        <div class="clear"/>
+      </div>
+    </div>
+  </header>
+</root>

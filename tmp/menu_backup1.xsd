@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+      
+      	
+        <xs:element name="div" maxOccurs="unbounded">
+        	<xs:complexType>
+        		<xs:sequence>
+			        <xs:element ref="ul" maxOccurs="unbounded"/>
+			    </xs:sequence>
+			    <xs:attribute name="class" use="required" type="xs:NCName"/>
+				<xs:attribute name="data-ur-toggler-component" type="xs:NCName"/>
+				<xs:attribute name="id" type="xs:NCName"/>
+        	</xs:complexType>
+        </xs:element>
+        
+        
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="ul">
+    <xs:complexType>
+      <xs:sequence>
+          <xs:element name="li">
+		    <xs:complexType>
+		      <xs:sequence>
+		        <xs:element ref="div_mw_border"/>
+		      </xs:sequence>
+		    </xs:complexType>
+		  </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="div_mw_border">
+  	<xs:complexType>
+      <xs:sequence>
+        <xs:element ref="div_mw_bkg_color"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <xs:element name="div_mw_bkg_color">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element name="a" minOccurs="1" maxOccurs="1" type="a_custom"/>
+        <xs:element name="div" minOccurs="1" maxOccurs="1" type="div_custom"/>
+      </xs:sequence>
+      <xs:attribute name="class" use="required" type="xs:NCName"/>
+      <xs:attribute name="data-ur-toggler-component" type="xs:NCName"/>
+      <xs:attribute name="id" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+ 
+
+    <xs:complexType name="a_custom">
+      <xs:sequence>
+        <xs:element name="div" minOccurs="1" maxOccurs="1" type="div_normal"/>
+      </xs:sequence>
+      <xs:attribute name="appshim" use="required" type="xs:boolean"/>
+      <xs:attribute name="class" use="required" type="xs:NCName"/>
+      <xs:attribute name="data-mw-title" use="required"/>
+      <xs:attribute name="href" use="required" type="xs:anyURI"/>
+      <xs:attribute name="rank" use="required" type="xs:integer"/>
+      <xs:attribute name="target" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  
+   <xs:complexType name="div_custom">
+      <xs:sequence>
+        <xs:element name="a" minOccurs="1" maxOccurs="1" type="a_normal"/>
+      </xs:sequence>
+      <xs:attribute name="class" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  
+	<xs:complexType name="a_normal">
+      <xs:attribute name="appshim" use="required" type="xs:boolean"/>
+      <xs:attribute name="class" use="required" type="xs:NCName"/>
+      <xs:attribute name="data-mw-title" use="required"/>
+      <xs:attribute name="href" use="required" type="xs:anyURI"/>
+      <xs:attribute name="rank" use="required" type="xs:integer"/>
+      <xs:attribute name="target" use="required" type="xs:NCName"/>
+    </xs:complexType>
+    
+    <xs:complexType name="div_normal">
+     <xs:simpleContent>
+        <xs:extension base="xs:string">
+           <xs:attribute name="class" type="xs:string" use="required">
+           </xs:attribute>
+        </xs:extension>
+    </xs:simpleContent>
+   </xs:complexType>
+   
+</xs:schema>

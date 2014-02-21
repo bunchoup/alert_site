@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="base_FD4.xsd"/>
+	
+	<xs:element name="root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="footer" type="footer_type"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="footer_type">
+		<xs:sequence>
+			<xs:element name="div" type="footer_top"></xs:element>
+			<xs:element name="div" type="footer_bottom"></xs:element>
+		</xs:sequence>
+		<xs:attribute ref="class" use="optional"/>
+	</xs:complexType>
+	
+	<!-- footer_top -->
+	<xs:complexType name="footer_top">
+		<xs:sequence>
+			<xs:element name="div" type="footer_top_row_1"/>
+			<xs:element name="div" type="footer_top_row_2"/>
+		</xs:sequence>
+		<xs:attribute ref="id" use="required"/>
+		<xs:attribute ref="class" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="footer_top_row_1">
+		<xs:sequence>
+			<xs:element name="a">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="span" type="span_simple_optional_text" minOccurs="2" maxOccurs="2"/>
+					</xs:sequence>
+					<xs:attribute ref="id" use="required"/>
+					<xs:attribute ref="href" use="required"/>
+					<xs:attribute ref="class" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute ref="class" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="footer_top_row_2">
+		<xs:sequence>
+			<xs:element name="div">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="form" type="footer_top_form"/>
+					</xs:sequence>
+					<xs:attribute ref="id" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute ref="class" use="required"/>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="footer_top_form">
+		<xs:sequence>
+			<xs:element name="input" type="input_simple" maxOccurs="unbounded"/>
+			<xs:element name="span" type="span_simple_optional_text"/>
+			<!-- searchtxt -->
+			<xs:element name="div">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="label">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="img" type="img_simple"/>
+								</xs:sequence>
+								<xs:attribute ref="class" use="optional"/>
+								<xs:attribute ref="for" use="optional"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute ref="class" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<!-- searchfield -->
+			<xs:element name="div">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="input" type="input_keyword"/>
+					</xs:sequence>
+					<xs:attribute ref="class" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<!-- searchbtn -->
+			<xs:element name="div">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="a">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="img" type="img_simple"/>
+								</xs:sequence>
+								<xs:attribute ref="class" use="optional"/>
+								<xs:attribute ref="href" use="required"/>
+								<xs:attribute ref="onclick" use="required"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute ref="class" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute ref="name" use="required"/>
+		<xs:attribute ref="action" use="required"/>
+		<xs:attribute ref="method" use="required"/>
+		<xs:attribute ref="onsubmit" use="required"/>
+		<xs:attribute ref="id" use="required"/>
+		<xs:attribute ref="style" use="optional"/>
+	</xs:complexType>
+	<!-- /footer_top -->
+	
+	<!-- _footer_bottom -->
+	<xs:complexType name="footer_bottom">
+		<xs:sequence>
+			<xs:element name="div" type="footer_bottom_top"/>
+			<xs:element name="div" type="footer_bottom_bottom"/>
+		</xs:sequence>
+		<xs:attribute ref="id" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="footer_bottom_top">
+		<xs:sequence>
+			<xs:group ref="menu_bottom" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="a" type="a_simple_with_text"/>
+		</xs:sequence>
+		<xs:attribute ref="id" use="optional"/>
+		<xs:attribute ref="class" use="optional"/>
+	</xs:complexType>
+	
+	<xs:group name="menu_bottom">
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="a" type="a_simple_with_text" />
+				<xs:element name="span" type="span_simple_with_text" />
+			</xs:sequence>
+		</xs:choice>
+	</xs:group>
+	
+	<xs:complexType name="footer_bottom_bottom">
+		<xs:sequence>
+			<xs:element name="div" type="div_simple_with_text"/>
+			<xs:element name="a" type="a_simple_with_text"/>
+			<xs:element name="div" type="div_simple_optional_text"/>
+		</xs:sequence>
+		<xs:attribute ref="id" use="required"/>
+		<xs:attribute ref="class" use="required"/>
+	</xs:complexType>
+	<!-- /_footer_bottom -->
+	
+
+	
+</xs:schema>

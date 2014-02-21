@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="base_FD4.xsd"/>
+	
+	<xs:element name="root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="div">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="div" type="div_simple_optional_text"></xs:element>
+							<xs:element name="div" type="div_form"></xs:element>
+						</xs:sequence>
+						<xs:attribute ref="class" use="required"/>
+						<xs:attribute ref="id" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="div_form">
+		<xs:sequence>
+			<xs:element name="form" type="form_fagf"/>
+		</xs:sequence>
+		<xs:attribute ref="class" use="required"/>
+		<xs:attribute ref="id" use="required"/>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="form_fagf">
+		<xs:sequence>
+			<xs:element name="input" minOccurs="1" maxOccurs="unbounded" type="input_simple"/>
+			<xs:element name="div">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="div" type="div_fagf_zip_occ_where"></xs:element>
+						<xs:element name="div" type="div_fagf_zip_occ_select"></xs:element>
+					</xs:sequence>
+					<xs:attribute ref="class" use="required"/>
+					<xs:attribute ref="id" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="div" type="div_error_msg"/>
+			<xs:element name="div">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="div" type="div_fagf_zip_occ_select"/>
+						<xs:element name="div">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="div" type="div_simple_optional_text"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute ref="class" use="required"/>
+					<xs:attribute ref="id" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute ref="onsubmit" use="required"/>
+		<xs:attribute ref="method" use="required"/>
+		<xs:attribute ref="name" use="required"/>
+		<xs:attribute ref="id" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="div_error_msg">
+		<xs:sequence>
+			<xs:element name="div" maxOccurs="unbounded" type="div_simple_optional_text"/>
+		</xs:sequence>
+		<xs:attribute ref="id" use="required"/>
+		<xs:attribute ref="style" use="optional"/>
+		<xs:attribute ref="class" use="optional"/>
+	</xs:complexType>
+	
+	<xs:complexType name="div_fagf_zip_occ_where">
+		<xs:sequence>
+			<xs:element name="input" type="input_simple"/>
+		</xs:sequence>
+		<xs:attribute ref="class" use="required"/>
+		<xs:anyAttribute/>
+	</xs:complexType>
+	
+	<xs:complexType name="div_fagf_zip_occ_select">
+		<xs:sequence>
+			<xs:element name="select" type="select_optional_list"/>
+		</xs:sequence>
+		<xs:attribute ref="class" use="optional"/>
+	</xs:complexType>
+	
+</xs:schema>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="base_FD4.xsd"/>
+	
+	<xs:element name="root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ul" minOccurs="1" maxOccurs="1" type="ul_main_menu"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:complexType name="ul_main_menu">
+		<xs:sequence>
+			<xs:element name="li" minOccurs="1" maxOccurs="unbounded" type="li_main_menu"></xs:element>
+		</xs:sequence>
+		<xs:attribute ref="id" use="required"/>
+		<xs:attribute ref="class" use="required"/>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="li_main_menu">
+		<xs:sequence>
+			<xs:element name="div" type="div_main_menu" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="ul" type="ul_submenu" minOccurs="0" maxOccurs="1"></xs:element>
+		</xs:sequence>
+		<xs:attribute ref="id" use="optional"/>
+		<xs:attribute ref="class" use="required"/>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="div_main_menu" mixed="true">
+		<xs:sequence>
+			<xs:element name="a" type="a_simple_with_text" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute ref="class" use="required"/>
+		<xs:attribute ref="id" use="optional"/>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="ul_submenu">
+		<xs:sequence>
+			<xs:element name="div" type="div_main_menu" minOccurs="1" maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+		<xs:attribute ref="class" use="required"/>
+		<xs:attribute ref="id" use="required"/>
+	</xs:complexType>
+	
+</xs:schema>

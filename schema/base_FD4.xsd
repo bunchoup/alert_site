@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	
+	<xs:complexType name="input_simple">
+		<xs:attribute ref="id" use="optional"/>
+		<xs:attribute ref="name" use="optional"/>
+		<xs:attribute ref="type" use="required"/>
+		<xs:attribute ref="class" use="optional"/>
+		<xs:attribute ref="maxlength" use="optional"/>
+		<xs:attribute ref="placeholder" use="optional"/>
+		<xs:attribute ref="value" use="optional"/>
+		<xs:attribute ref="alt" use="optional"/>
+		<xs:attribute ref="src" use="optional"/>
+	</xs:complexType>
+	
+	<xs:complexType name="input_keyword">
+		<xs:attribute ref="id" use="required"/>
+		<xs:attribute ref="onfocus" use="required"/>
+		<xs:attribute ref="onblur" use="required"/>
+		<xs:attribute ref="onkeyup" use="required"/>
+		<xs:attribute ref="onkeypress" use="required"/>
+		<xs:attribute ref="autocomplete" use="required"/>
+		<xs:attribute ref="type" use="required"/>
+		<xs:attribute ref="name" use="required"/>
+		<xs:attribute ref="placeholder" use="required"/>
+		<xs:attribute ref="tabindex" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="img_simple">
+		<xs:attribute ref="id" use="optional"/>
+		<xs:attribute ref="class" use="optional"/>
+		<xs:attribute ref="alt" use="optional"/>
+		<xs:attribute ref="src" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="select_optional_list">
+		<xs:sequence>
+			<xs:element name="option" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="value" type="xs:string" use="required"></xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute ref="class" use="required"/>
+		<xs:attribute ref="id" use="required"/>
+		<xs:attribute ref="name" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="select_with_list">
+		<xs:sequence>
+			<xs:element name="option" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="value" type="xs:string" use="required"></xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute ref="class" use="required"/>
+		<xs:attribute ref="id" use="required"/>
+		<xs:attribute ref="name" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="a_simple_with_text">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute ref="href" use="required"/>
+				<xs:attribute ref="class" use="optional"/>
+				<xs:attribute ref="target" use="optional"/>
+				<xs:attribute ref="rank" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="a_simple_optional_text">
+		<xs:simpleContent>
+			<xs:extension base="optional_string">
+				<xs:attribute ref="id" use="required"></xs:attribute>
+				<xs:attribute ref="class" use="required"></xs:attribute>
+				<xs:attribute ref="href" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="div_simple_with_text">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute ref="class" use="optional"></xs:attribute>
+				<xs:attribute ref="id" use="optional"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="div_simple_optional_text">
+		<xs:simpleContent>
+			<xs:extension base="optional_string">
+				<xs:attribute ref="class" use="optional"></xs:attribute>
+				<xs:attribute ref="id" use="optional"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="span_simple_with_text">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute ref="class" use="optional"></xs:attribute>
+				<xs:attribute ref="id" use="optional"></xs:attribute>
+				<xs:attribute ref="style" use="optional"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="span_simple_optional_text">
+		<xs:simpleContent>
+			<xs:extension base="optional_string">
+				<xs:attribute ref="class" use="optional"></xs:attribute>
+				<xs:attribute ref="id" use="optional"></xs:attribute>
+				<xs:attribute ref="style" use="optional"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="optional_string">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[\s\S]*" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:attribute name="id" type="xs:NCName"/>
+	<xs:attribute name="name" type="xs:NCName"/>
+	<xs:attribute name="type" type="xs:NCName"/>
+	<xs:attribute name="class" type="xs:string"/>
+	<xs:attribute name="href" type="xs:anyURI"/>
+	<xs:attribute name="target" type="xs:string"/>
+	<xs:attribute name="rank" type="xs:string"/>
+	<xs:attribute name="maxlength" type="xs:int"/>
+	<xs:attribute name="placeholder" type="xs:string" />
+	<xs:attribute name="value" type="xs:string" />
+	<xs:attribute name="alt" type="xs:string" />
+	<xs:attribute name="src" type="xs:anyURI" />
+	<xs:attribute name="onsubmit" type="xs:string" />
+	<xs:attribute name="action" type="xs:anyURI"/>
+	<xs:attribute name="method" type="xs:string" />
+	<xs:attribute name="style" type="xs:string"/>
+	<xs:attribute name="for" type="xs:string"/>
+	
+	<xs:attribute name="onclick" type="xs:string"/>
+	<xs:attribute name="onfocus" type="xs:string" />
+	<xs:attribute name="onblur" type="xs:string"/>
+	<xs:attribute name="onkeyup" type="xs:string" />
+	<xs:attribute name="onkeypress" type="xs:string"/>
+	
+	<xs:attribute name="autocomplete" type="xs:string"/>
+	<xs:attribute name="tabindex" type="xs:int"/>
+	
+</xs:schema>
